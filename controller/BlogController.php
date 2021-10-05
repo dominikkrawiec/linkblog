@@ -14,7 +14,7 @@
         public function getResult(){
             $posts = new PostController();
             
-            render('posts', $posts->all);
+            new View('posts', $posts->all);
         }
         
 

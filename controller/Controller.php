@@ -1,7 +1,7 @@
 <?php
 
     include('lk-config.php');
-    include('./views/View.php');
+    include('./view/View.php');
 
     class Controller {
 

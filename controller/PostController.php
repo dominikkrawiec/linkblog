@@ -8,23 +8,26 @@ class PostController extends Controller {
     
     public function __construct(){
         $this->conn = $this->DbConnect();
-        $this->$all = $this->getAll();
+        $this->all = $this->getAll();
     }
 
     public function getAll(){
-        $sql = 'SELECT * FROM posts';
-        $posts = $this->getData($conn, $sql);
+        $sql = "SELECT * FROM post";
+        $posts = $this->getData($this->conn, $sql);
+        $allPosts = [];
 
-        while($row = $result->fetch_array()) {
-            $posts[] = new Post(
-                $row['id'],
-                $row['title'],
-                $row['link'],
-                $row['content']
-            );
+        while($row = mysqli_fetch_array($posts)) {
+            
+            $id = $row['id'];
+            $title = $row['title'];
+            $link = $row['link'];
+            $content = $row['content'];
+
+            array_push($allPosts, new Post($id, $title, $link, $content));
+
         }
 
-        return $posts;
+        return $allPosts;
     }
 }
 
