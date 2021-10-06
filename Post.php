@@ -7,11 +7,12 @@ class Post {
     public $link;
     public $uri;
 
-    public function __construct($id, $title, $link, $content){
+    public function __construct($id, $title, $link, $content, $uri){
         $this->id = $id;
         $this->title = $title;
         $this->link = $link;
         $this->content = $content;
+        $this->uri = $uri;
     }
 }
 

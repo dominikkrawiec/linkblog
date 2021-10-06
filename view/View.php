@@ -13,7 +13,16 @@
         }
 
         public function render($view){
+            $viewData = $this->formatRenderData($this->data);
+
             include($view);
+        }
+
+        public function formatRenderData($data){
+            $jsonArray = json_encode($data);
+
+            return $jsonArray;
+
         }
 
     }

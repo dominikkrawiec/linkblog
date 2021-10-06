@@ -15,8 +15,8 @@
             return $connection;
         }
 
-        public function getData($conn, $sql){
-            $data = mysqli_query($conn, $sql);
+        public function getData($conn, $sql, $limit = false){
+            $data = mysqli_query($conn, $sql.' LIMIT '.$limit);
 
             return $data;
 
