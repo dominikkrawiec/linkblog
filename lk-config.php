@@ -7,7 +7,7 @@ define('DB_PASS', '');
 
 define('POST_SLUG', '/p/');
 define('POST_LIMIT', 10);
-define('DOMAIN', 'http://$host/linkblog/src/');
+define('DOMAIN', 'http://localhost/linkblog/src/');
 
 
 ?>
