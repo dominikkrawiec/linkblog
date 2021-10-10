@@ -1,8 +1,7 @@
  RewriteEngine On  
- RewriteRule ^post/([a-zA-Z0-9-/]+)/([a-zA-Z0-9-/]+)$ index.php?type=post&id=$1&slug=$2 
+ RewriteRule ^post/([a-zA-Z0-9-/]+)/([a-zA-Z0-9-/]+)$ index.php?type=post&id=$1&slug=$2
  RewriteRule ^post/([a-zA-Z0-9-/]+)/([a-zA-Z0-9-/]+)/ index.php?type=post&id=$1&slug=$2
 
-RewriteCond %{QUERY_STRING} ^type=post&id=([0-9]*)&slug=([a-zA-Z0-9-/]+)
-RewriteCond %{REQUEST_URI} !/linkblog/src/post/(.*)$
-RewriteRule ^(.*)?type=(.*)$ http://localhost/linkblog/src/post/%1/%2? [R=301,L]
+ RewriteRule ^redirect/([a-zA-Z0-9-/]+)$ index.php?type=redirect&linkId=$1
+ RewriteRule ^redirect/([a-zA-Z0-9-/]+)/ index.php?type=redirect&linkId=$1
 

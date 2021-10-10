@@ -1,7 +1,6 @@
 <?php
 
     require('./Blog.php');
-    require('Controller.php');
     require('PostController.php');
 
     class BlogController extends Controller {

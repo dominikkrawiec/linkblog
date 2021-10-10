@@ -1,7 +1,8 @@
 <?php
 
+require('./controller/RedirectController.php');
 
-class Router {
+class Router extends RedirectController {
     private $conn;
 
     public $type;
@@ -20,7 +21,7 @@ class Router {
     public function redirect(){
         
         if(!$this->type){
-            header("Location: http://$host/linkblog/src/index.php?type=list",TRUE,301);
+            header("Location: ".DOMAIN."index.php?type=list",TRUE,301);
         } else {
             switch($this->type){
                 case 'post':
@@ -29,13 +30,17 @@ class Router {
 
                 case 'list':
                     break;    
+
+                case 'redirect':
+                    $this->getLinkUrl();  
+                    break;  
             }
         }
     }
 
     public function postRoute(){
-        foreach($this as $key => $value){
-            if(!$value){
+        
+            if(!$this->slug){
                 $sql = "SELECT * FROM $this->type WHERE id = $this->id";
         
                 $data = mysqli_query($this->conn, $sql);
@@ -49,7 +54,23 @@ class Router {
                     header("Location: ".DOMAIN."index.php?type=$this->type&id=$this->id&slug=$this->slug",TRUE,301);
                 }
             }
+        
+    }
+
+    public function getLinkUrl(){
+        $uri = $_SERVER['REQUEST_URI'];
+        $key = NULL;
+        $linkId = NULL;
+
+        if(isset($_GET['linkId'])){
+            $linkId = $_GET['linkId'];
         }
+
+        $redirection = new RedirectController();
+        $redirection->getSingleLinkById($linkId);
+
+
+
     }
 
 }

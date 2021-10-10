@@ -35,7 +35,7 @@ class PostController extends Controller {
     }
 
     public function getAll(){
-        $sql = "SELECT * FROM post";
+        $sql = "SELECT * FROM post INNER JOIN link on post.link = link.id";
         $postsAll = $this->getData($this->conn, $sql, POST_LIMIT);
         return $this->postLoop($postsAll);
 
